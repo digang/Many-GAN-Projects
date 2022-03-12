@@ -6,7 +6,7 @@ from PIL import Image
 from torch.utils.data import Dataset
 import torchvision.transforms as transforms
 
-class ImageDatasets(Dataset):
+class ImageDataset(Dataset):
     def __init__(self, root, transforms_=None, unaligned=False, mode='train'):
         self.transforms = transforms.Compose(transforms_)
         self.unaligned = unaligned
@@ -25,4 +25,3 @@ class ImageDatasets(Dataset):
         return {'A' : item_A, 'B' : item_B}
     def __len__(self):
         return max(len(self.files_A), len(self.files_B))
-    
